@@ -2,7 +2,7 @@
 //  ItemType+CoreDataProperties.swift
 //  DreamLister
 //
-//  Created by Matthias Hofmann on 06.09.16.
+//  Created by Matthias Hofmann on 13.09.16.
 //  Copyright © 2016 MatthiasHofmann. All rights reserved.
 //
 
