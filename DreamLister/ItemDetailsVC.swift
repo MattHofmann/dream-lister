@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class ItemDetailsVC: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class ItemDetailsVC: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
 
     @IBOutlet weak var storePicker: UIPickerView!
     @IBOutlet weak var titleField: CustomTextField!
@@ -36,7 +36,10 @@ class ItemDetailsVC: UIViewController, UIPickerViewDataSource, UIPickerViewDeleg
         imagePicker = UIImagePickerController()
         imagePicker.delegate = self
         
-        /*
+        titleField.delegate = self
+        priceField.delegate = self
+        detailsField.delegate = self
+        
         // generate test store data
         let store = Store(context: context)
         store.name = "Best Buy"
@@ -52,7 +55,7 @@ class ItemDetailsVC: UIViewController, UIPickerViewDataSource, UIPickerViewDeleg
         store6.name = "K Mart"
         // send down to core data
         ad.saveContext()
-        */
+        
         
         getStores()
         
@@ -175,5 +178,19 @@ class ItemDetailsVC: UIViewController, UIPickerViewDataSource, UIPickerViewDeleg
         
         imagePicker.dismiss(animated: true, completion: nil)
     }
+    
+    // MARK: Keyboard Methods
+    
+    // close keyboard when user tap outside textfield
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
+    // close keyboard when user presses return
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
     
 }
