@@ -26,6 +26,8 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFe
         attemptFetch()
     }
 
+    // MARK: TableView Methods
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath) as! ItemCell
@@ -78,6 +80,8 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFe
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 150
     }
+    
+    // MARK: Core Data Methods
     
     func attemptFetch() {
         // type of fetched data
@@ -160,6 +164,8 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFe
         }
         
     }
+    
+    // MARK: Test Data
     
     func generateTestData() {
         

@@ -11,6 +11,8 @@ import CoreData
 
 class ItemDetailsVC: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
 
+    // MARK: IBOutlets
+    
     @IBOutlet weak var storePicker: UIPickerView!
     @IBOutlet weak var titleField: CustomTextField!
     @IBOutlet weak var priceField: CustomTextField!
@@ -40,22 +42,8 @@ class ItemDetailsVC: UIViewController, UIPickerViewDataSource, UIPickerViewDeleg
         priceField.delegate = self
         detailsField.delegate = self
         
-        // generate test store data
-        let store = Store(context: context)
-        store.name = "Best Buy"
-        let store2 = Store(context: context)
-        store2.name = "Tesla Dealership"
-        let store3 = Store(context: context)
-        store3.name = "Frys Electronics"
-        let store4 = Store(context: context)
-        store4.name = "Target"
-        let store5 = Store(context: context)
-        store5.name = "Amazon"
-        let store6 = Store(context: context)
-        store6.name = "K Mart"
-        // send down to core data
-        ad.saveContext()
-        
+    
+        //generateStoreTestData()
         
         getStores()
         
@@ -65,6 +53,8 @@ class ItemDetailsVC: UIViewController, UIPickerViewDataSource, UIPickerViewDeleg
         
     }
 
+    // MARK: PickerView
+    
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         
         let store = stores[row]
@@ -94,6 +84,8 @@ class ItemDetailsVC: UIViewController, UIPickerViewDataSource, UIPickerViewDeleg
         }
         
     }
+    
+    // MARK: Core Data Methods
     
     // add new data
     @IBAction func savePressed(_ sender: UIButton) {
@@ -164,7 +156,7 @@ class ItemDetailsVC: UIViewController, UIPickerViewDataSource, UIPickerViewDeleg
         _ = navigationController?.popViewController(animated: true)
     }
     
-    // Image       
+    // set Image
     @IBAction func addImage(_ sender: UIButton) {
         
         present(imagePicker, animated: true, completion: nil)
@@ -188,9 +180,26 @@ class ItemDetailsVC: UIViewController, UIPickerViewDataSource, UIPickerViewDeleg
     
     // close keyboard when user presses return
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
+        self.view.endEditing(true)
         return true
     }
     
+    // MARK: Generate test store data
     
+    func generateStoreTestData() {
+        let store = Store(context: context)
+        store.name = "Best Buy"
+        let store2 = Store(context: context)
+        store2.name = "Tesla Dealership"
+        let store3 = Store(context: context)
+        store3.name = "Frys Electronics"
+        let store4 = Store(context: context)
+        store4.name = "Target"
+        let store5 = Store(context: context)
+        store5.name = "Amazon"
+        let store6 = Store(context: context)
+        store6.name = "K Mart"
+        // send down to core data
+        ad.saveContext()
+    }
 }
