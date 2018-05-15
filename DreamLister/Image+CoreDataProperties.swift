@@ -2,17 +2,19 @@
 //  Image+CoreDataProperties.swift
 //  DreamLister
 //
-//  Created by Matthias Hofmann on 13.09.16.
-//  Copyright © 2016 MatthiasHofmann. All rights reserved.
+//  Created by Matthias Hofmann on 5/15/18.
+//  Copyright © 2018 MatthiasHofmann. All rights reserved.
+//
 //
 
 import Foundation
 import CoreData
 
+
 extension Image {
 
     @nonobjc public class func fetchRequest() -> NSFetchRequest<Image> {
-        return NSFetchRequest<Image>(entityName: "Image");
+        return NSFetchRequest<Image>(entityName: "Image")
     }
 
     @NSManaged public var image: NSObject?
