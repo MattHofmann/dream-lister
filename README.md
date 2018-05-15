@@ -1,5 +1,5 @@
 # dream-lister
-A 'wish-list'-App using core data. (iOS10, Swift 3)
+A 'wish-list'-App using core data. (iOS11, Swift 4)
 
 Screenshots:
 
